@@ -1,13 +1,18 @@
 ---
-title: "About me"
+title: "소개"
 template: "page"
-socialImage: "./notebook.jpg"
+socialImage: "./daeseong-park.png"
 ---
 
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
+### 인사
+안녕하세요! Frontend Developer 고슈라고 합니다.   
+미대 출신의 일러스트레이터, 그래픽 디자이너, UI/UX 디자이너, 안드로이드 개발자였다   
+지금은 웹 개발자로서 즐겁게 살아갑니다. 
 
-![Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.](/notebook.jpg)
+### 취미
+원래 이것저것 하는 걸 좋아합니다.   
+취미는 그림 그리기, 게임하기, 전시 관람하기 입니다.
 
-_Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi._
+가장 좋아하는 소산 박대성 화백의 작품입니다.
 
-Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus
+![금강전도, 168x137cm, 2009](/daeseong-park.png)*금강전도, 168x137cm, 2009*

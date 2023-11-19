@@ -1,40 +1,40 @@
 {
-  "title": "Blog by John Doe",
-  "url": "https://lumen.alxshelepenok.com",
-  "subtitle": "Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.",
-  "copyright": "© All rights reserved.",
-  "googleAnalyticsId": "UA-73379983-2",
+  "title": "GOHSUE",
+  "url": "https://gohsue.github.io",
+  "subtitle": "개발자 고슈",
+  "copyright": "© gohsue, Built with gatsby-starter-lumen",
+  "googleAnalyticsId": "",
   "disqusShortname": "",
-  "postsLimit": 4,
+  "postsLimit": 8,
   "pathPrefix": "/",
   "menu": [
     {
-      "label": "Articles",
+      "label": "아티클",
       "path": "/"
     },
     {
-      "label": "About me",
+      "label": "소개",
       "path": "/pages/about"
     },
     {
-      "label": "Contact me",
+      "label": "연락처",
       "path": "/pages/contacts"
     }
   ],
   "author": {
-    "name": "John Doe",
-    "photo": "/photo.jpg",
-    "bio": "Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.",
+    "name": "GOHSUE",
+    "photo": "/photo.png",
+    "bio": "고슈입니다. 반갑습니다 😄",
     "contacts": {
+      "github": "gohsue",
+      "twitter": "go__swimming",
+      "email": "gohsue0@gmail.com",
       "rss": "",
-      "email": "",
-      "github": "#",
-      "facebook": "#",
-      "telegram": "#",
-      "twitter": "#",
-      "linkedin": "#",
-      "instagram": "#",
-      "mastodon": "#",
+      "facebook": "",
+      "telegram": "",
+      "linkedin": "",
+      "instagram": "",
+      "mastodon": "",
       "line": "",
       "weibo": "",
       "gitlab": "",
