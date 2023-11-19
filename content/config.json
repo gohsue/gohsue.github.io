@@ -17,6 +17,10 @@
       "path": "/pages/about"
     },
     {
+      "label": "잡담",
+      "path": "/pages/tweets"
+    },
+    {
       "label": "연락처",
       "path": "/pages/contacts"
     }
