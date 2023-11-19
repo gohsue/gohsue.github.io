@@ -32,7 +32,7 @@
     "test": "jest --config ./internal/testing/jest-config.ts",
     "test:update-snapshot": "jest --updateSnapshot --config ./internal/testing/jest-config.ts",
     "test:watch": "jest --watch --config ./internal/testing/jest-config.ts",
-    "deploy": "gatsby build & gh-pages -d public -b main"
+    "deploy": "gatsby build & gh-pages -d public -b gh-pages"
   },
   "commitlint": {
     "extends": [
