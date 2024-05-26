@@ -12,7 +12,7 @@ tags:
   - "Tip"
   - "Effective"
 description: "Lambda를 이용하여 db 동작 시간 관리하는 방법"
-socialImage: ".media/image.png"
+socialImage: "media/image-12.png"
 ---
 
 ## 문제 상황
