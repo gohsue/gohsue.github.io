@@ -21,19 +21,13 @@
 
 /* Custom Highlight */
 code[class*=language-], pre[class*=language-] {
-  color: $color-blue;
+  color: $color-gray;
+}
+
+code[class*=language-text], pre[class*=language-text] {
+  color: $--color-primary;
 }
 
 :not(pre) > code[class*=language-] {
   padding: 0.1em 0.3em;
-}
-
-:not(pre) > code[class*=language-], pre[class*=language-] {
-  background-color: hsl(240, 1%, 97%);
-}
-
-code[class*=language-] ::selection, code[class*=language-]::selection, pre[class*=language-] ::selection, pre[class*=language-]::selection {
-  background: hsl(240, 1%, 92%);
-  background-color: hsl(240, 1%, 92%);
-  color: $color-orange;
 }
