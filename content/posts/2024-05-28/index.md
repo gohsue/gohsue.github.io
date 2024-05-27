@@ -12,7 +12,7 @@ tags:
   - "Tip"
   - "Effective"
 description: "Next.js 에서 정적 페이지 배포 (Static Exports)할 때 국제화 처리 하는 방법"
-socialImage: "media/image-3.png"
+socialImage: "media/240528-3.png"
 ---
 
 ## 0. 배경
@@ -22,7 +22,7 @@ socialImage: "media/image-3.png"
 
 하지만, `next-i18next`를 이용한 국제화 라우팅은 Node.js 서버를 통해 처리된다.
 
-![](media/image.png)_정적 파일 배포 시 지원하지 않는 기능 “국제화 라우팅”_
+![](media/240528.png)_정적 파일 배포 시 지원하지 않는 기능 “국제화 라우팅”_
 
 > 즉, 정적 배포 시에는 국제화 라우팅 기능을 사용할 수가 없다.
 > 그러면.. 국제화는 어떻게 진행하지?
@@ -34,7 +34,7 @@ socialImage: "media/image-3.png"
 
 불행 중 다행히도, [next-i18n-next 에서는 이 블로그를 참고하여 직접 구현하는 것을 제안한다.](https://github.com/i18next/next-i18next?tab=readme-ov-file#static-html-export-ssg)
 
-![](media/image-1.png)_아.. 지원 안하니까 포스팅 보고 직접 해라.. ㅇㅋ_
+![](media/240528-1.png)_아.. 지원 안하니까 포스팅 보고 직접 해라.. ㅇㅋ_
 
 친절한 포스팅 덕분에 다음과 같은 순서를 거쳐 작업을 진행했다.
 
@@ -47,7 +47,7 @@ socialImage: "media/image-3.png"
 
 예시 코드는 모두 `js` 로 되어있었기 때문에 `@ts-ignore` , `eslint-disabled` 처리하고 기능 동작 자체에만 집중하여 마무리했다.
 
-![](media/image-2.png)_국제화 라우팅 페이지 생성 과정_
+![](media/240528-2.png)_국제화 라우팅 페이지 생성 과정_
 
 첫번째 PR에서 다음 해야할 일을 다음과 같이 정리했다.
 
@@ -163,7 +163,7 @@ return (
 하지만 redirect 방식이 변경되면서 작업에 불편함을 느낀다는 피드백을 받아,
 `/pages` 하위에 `router page`를 추가하면, **빌드 시 자동으로 `/[locale]` 폴더가 generate 되도록 수정하였다.**
 
-![](media/image-3.png)_국제화 라우팅 페이지 생성 과정 (변경 후)_
+![](media/240528-3.png)_국제화 라우팅 페이지 생성 과정 (변경 후)_
 
 <br />
 <br />
