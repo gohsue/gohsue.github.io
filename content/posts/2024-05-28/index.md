@@ -11,7 +11,7 @@ tags:
   - "i18n"
   - "Tip"
   - "Effective"
-description: "Next.js 에서 정적 페이지 배포 (Static Exports)할 때 국제화 처리 하는 방법."
+description: "Next.js 에서 정적 페이지 배포 (Static Exports)할 때 국제화 처리 하는 방법"
 socialImage: "media/image-3.png"
 ---
 
