@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[GOHSUE]]></title><description><![CDATA[GOHSUE]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 27 May 2024 16:35:47 GMT</lastBuildDate><item><title><![CDATA[Next.js를 이용한 정적 페이지 배포에 국제화 더하기]]></title><description><![CDATA[Next.js 에서 정적 페이지 배포 (Static Exports)할 때 국제화 처리 하는 방법]]></description><link>https://gohsue.github.io/posts/next-js-static-exports-with-i18n</link><guid isPermaLink="false">https://gohsue.github.io/posts/next-js-static-exports-with-i18n</guid><pubDate>Tue, 28 May 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;0-배경&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#0-%EB%B0%B0%EA%B2%BD&quot; aria-label=&quot;0 배경 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;0. 배경&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[GOHSUE]]></title><description><![CDATA[GOHSUE]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 27 May 2024 16:45:57 GMT</lastBuildDate><item><title><![CDATA[Next.js를 이용한 정적 페이지 배포에 국제화 더하기]]></title><description><![CDATA[Next.js 에서 정적 페이지 배포 (Static Exports)할 때 국제화 처리 하는 방법]]></description><link>https://gohsue.github.io/posts/next-js-static-exports-with-i18n</link><guid isPermaLink="false">https://gohsue.github.io/posts/next-js-static-exports-with-i18n</guid><pubDate>Tue, 28 May 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;0-배경&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#0-%EB%B0%B0%EA%B2%BD&quot; aria-label=&quot;0 배경 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;0. 배경&lt;/h2&gt;
 &lt;p&gt;현업에서 서버가 필요하지 않은 페이지의 경우, 서버 관리와 비용을 최소화하기 위해
 &lt;code class=&quot;language-text&quot;&gt;Next.js의 Static Exports&lt;/code&gt; 를 이용하여 &lt;code class=&quot;language-text&quot;&gt;S3&lt;/code&gt;를 이용한 &lt;strong&gt;정적 페이지 배포 방식을 채택하였다.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;하지만, &lt;code class=&quot;language-text&quot;&gt;next-i18next&lt;/code&gt;를 이용한 국제화 라우팅은 Node.js 서버를 통해 처리된다.&lt;/p&gt;
@@ -8,7 +8,7 @@
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/698740b4e6b5fad478b74aa95b5fc1dc/738b8/image.png&quot;
+    href=&quot;/static/698740b4e6b5fad478b74aa95b5fc1dc/738b8/240528.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
@@ -19,24 +19,24 @@
   &gt;&lt;/span&gt;
   &lt;picture&gt;
           &lt;source
-              srcset=&quot;/static/698740b4e6b5fad478b74aa95b5fc1dc/8ac56/image.webp 240w,
-/static/698740b4e6b5fad478b74aa95b5fc1dc/d3be9/image.webp 480w,
-/static/698740b4e6b5fad478b74aa95b5fc1dc/d95e5/image.webp 639w&quot;
+              srcset=&quot;/static/698740b4e6b5fad478b74aa95b5fc1dc/8ac56/240528.webp 240w,
+/static/698740b4e6b5fad478b74aa95b5fc1dc/d3be9/240528.webp 480w,
+/static/698740b4e6b5fad478b74aa95b5fc1dc/d95e5/240528.webp 639w&quot;
               sizes=&quot;(max-width: 639px) 100vw, 639px&quot;
               type=&quot;image/webp&quot;
             /&gt;
           &lt;source
-            srcset=&quot;/static/698740b4e6b5fad478b74aa95b5fc1dc/8ff5a/image.png 240w,
-/static/698740b4e6b5fad478b74aa95b5fc1dc/e85cb/image.png 480w,
-/static/698740b4e6b5fad478b74aa95b5fc1dc/738b8/image.png 639w&quot;
+            srcset=&quot;/static/698740b4e6b5fad478b74aa95b5fc1dc/8ff5a/240528.png 240w,
+/static/698740b4e6b5fad478b74aa95b5fc1dc/e85cb/240528.png 480w,
+/static/698740b4e6b5fad478b74aa95b5fc1dc/738b8/240528.png 639w&quot;
             sizes=&quot;(max-width: 639px) 100vw, 639px&quot;
             type=&quot;image/png&quot;
           /&gt;
           &lt;img
             class=&quot;gatsby-resp-image-image&quot;
-            src=&quot;/static/698740b4e6b5fad478b74aa95b5fc1dc/738b8/image.png&quot;
-            alt=&quot;image&quot;
-            title=&quot;image&quot;
+            src=&quot;/static/698740b4e6b5fad478b74aa95b5fc1dc/738b8/240528.png&quot;
+            alt=&quot;240528&quot;
+            title=&quot;240528&quot;
             loading=&quot;lazy&quot;
             decoding=&quot;async&quot;
             style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
@@ -58,7 +58,7 @@
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/8d19eb0a85a14bce0f0708f922083d5e/9cab2/image-1.png&quot;
+    href=&quot;/static/8d19eb0a85a14bce0f0708f922083d5e/9cab2/240528-1.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
@@ -69,24 +69,24 @@
   &gt;&lt;/span&gt;
   &lt;picture&gt;
           &lt;source
-              srcset=&quot;/static/8d19eb0a85a14bce0f0708f922083d5e/8ac56/image-1.webp 240w,
-/static/8d19eb0a85a14bce0f0708f922083d5e/d3be9/image-1.webp 480w,
-/static/8d19eb0a85a14bce0f0708f922083d5e/b4e26/image-1.webp 864w&quot;
+              srcset=&quot;/static/8d19eb0a85a14bce0f0708f922083d5e/8ac56/240528-1.webp 240w,
+/static/8d19eb0a85a14bce0f0708f922083d5e/d3be9/240528-1.webp 480w,
+/static/8d19eb0a85a14bce0f0708f922083d5e/b4e26/240528-1.webp 864w&quot;
               sizes=&quot;(max-width: 864px) 100vw, 864px&quot;
               type=&quot;image/webp&quot;
             /&gt;
           &lt;source
-            srcset=&quot;/static/8d19eb0a85a14bce0f0708f922083d5e/8ff5a/image-1.png 240w,
-/static/8d19eb0a85a14bce0f0708f922083d5e/e85cb/image-1.png 480w,
-/static/8d19eb0a85a14bce0f0708f922083d5e/9cab2/image-1.png 864w&quot;
+            srcset=&quot;/static/8d19eb0a85a14bce0f0708f922083d5e/8ff5a/240528-1.png 240w,
+/static/8d19eb0a85a14bce0f0708f922083d5e/e85cb/240528-1.png 480w,
+/static/8d19eb0a85a14bce0f0708f922083d5e/9cab2/240528-1.png 864w&quot;
             sizes=&quot;(max-width: 864px) 100vw, 864px&quot;
             type=&quot;image/png&quot;
           /&gt;
           &lt;img
             class=&quot;gatsby-resp-image-image&quot;
-            src=&quot;/static/8d19eb0a85a14bce0f0708f922083d5e/9cab2/image-1.png&quot;
-            alt=&quot;image 1&quot;
-            title=&quot;image 1&quot;
+            src=&quot;/static/8d19eb0a85a14bce0f0708f922083d5e/9cab2/240528-1.png&quot;
+            alt=&quot;240528 1&quot;
+            title=&quot;240528 1&quot;
             loading=&quot;lazy&quot;
             decoding=&quot;async&quot;
             style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
@@ -110,7 +110,7 @@
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/47aa2c81e19f0c82d54ce10edfd55729/302a4/image-2.png&quot;
+    href=&quot;/static/47aa2c81e19f0c82d54ce10edfd55729/302a4/240528-2.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
@@ -121,26 +121,26 @@
   &gt;&lt;/span&gt;
   &lt;picture&gt;
           &lt;source
-              srcset=&quot;/static/47aa2c81e19f0c82d54ce10edfd55729/8ac56/image-2.webp 240w,
-/static/47aa2c81e19f0c82d54ce10edfd55729/d3be9/image-2.webp 480w,
-/static/47aa2c81e19f0c82d54ce10edfd55729/e46b2/image-2.webp 960w,
-/static/47aa2c81e19f0c82d54ce10edfd55729/260c2/image-2.webp 1080w&quot;
+              srcset=&quot;/static/47aa2c81e19f0c82d54ce10edfd55729/8ac56/240528-2.webp 240w,
+/static/47aa2c81e19f0c82d54ce10edfd55729/d3be9/240528-2.webp 480w,
+/static/47aa2c81e19f0c82d54ce10edfd55729/e46b2/240528-2.webp 960w,
+/static/47aa2c81e19f0c82d54ce10edfd55729/260c2/240528-2.webp 1080w&quot;
               sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
               type=&quot;image/webp&quot;
             /&gt;
           &lt;source
-            srcset=&quot;/static/47aa2c81e19f0c82d54ce10edfd55729/8ff5a/image-2.png 240w,
-/static/47aa2c81e19f0c82d54ce10edfd55729/e85cb/image-2.png 480w,
-/static/47aa2c81e19f0c82d54ce10edfd55729/d9199/image-2.png 960w,
-/static/47aa2c81e19f0c82d54ce10edfd55729/302a4/image-2.png 1080w&quot;
+            srcset=&quot;/static/47aa2c81e19f0c82d54ce10edfd55729/8ff5a/240528-2.png 240w,
+/static/47aa2c81e19f0c82d54ce10edfd55729/e85cb/240528-2.png 480w,
+/static/47aa2c81e19f0c82d54ce10edfd55729/d9199/240528-2.png 960w,
+/static/47aa2c81e19f0c82d54ce10edfd55729/302a4/240528-2.png 1080w&quot;
             sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
             type=&quot;image/png&quot;
           /&gt;
           &lt;img
             class=&quot;gatsby-resp-image-image&quot;
-            src=&quot;/static/47aa2c81e19f0c82d54ce10edfd55729/d9199/image-2.png&quot;
-            alt=&quot;image 2&quot;
-            title=&quot;image 2&quot;
+            src=&quot;/static/47aa2c81e19f0c82d54ce10edfd55729/d9199/240528-2.png&quot;
+            alt=&quot;240528 2&quot;
+            title=&quot;240528 2&quot;
             loading=&quot;lazy&quot;
             decoding=&quot;async&quot;
             style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
@@ -244,7 +244,7 @@ to-be: import { Sample } from ‘@/components/Sample’;&lt;/p&gt;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/e8cf3198083c6391f4d91eaf2a737c1f/3c051/image-3.png&quot;
+    href=&quot;/static/e8cf3198083c6391f4d91eaf2a737c1f/3c051/240528-3.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
@@ -255,24 +255,24 @@ to-be: import { Sample } from ‘@/components/Sample’;&lt;/p&gt;
   &gt;&lt;/span&gt;
   &lt;picture&gt;
           &lt;source
-              srcset=&quot;/static/e8cf3198083c6391f4d91eaf2a737c1f/8ac56/image-3.webp 240w,
-/static/e8cf3198083c6391f4d91eaf2a737c1f/d3be9/image-3.webp 480w,
-/static/e8cf3198083c6391f4d91eaf2a737c1f/9046c/image-3.webp 760w&quot;
+              srcset=&quot;/static/e8cf3198083c6391f4d91eaf2a737c1f/8ac56/240528-3.webp 240w,
+/static/e8cf3198083c6391f4d91eaf2a737c1f/d3be9/240528-3.webp 480w,
+/static/e8cf3198083c6391f4d91eaf2a737c1f/9046c/240528-3.webp 760w&quot;
               sizes=&quot;(max-width: 760px) 100vw, 760px&quot;
               type=&quot;image/webp&quot;
             /&gt;
           &lt;source
-            srcset=&quot;/static/e8cf3198083c6391f4d91eaf2a737c1f/8ff5a/image-3.png 240w,
-/static/e8cf3198083c6391f4d91eaf2a737c1f/e85cb/image-3.png 480w,
-/static/e8cf3198083c6391f4d91eaf2a737c1f/3c051/image-3.png 760w&quot;
+            srcset=&quot;/static/e8cf3198083c6391f4d91eaf2a737c1f/8ff5a/240528-3.png 240w,
+/static/e8cf3198083c6391f4d91eaf2a737c1f/e85cb/240528-3.png 480w,
+/static/e8cf3198083c6391f4d91eaf2a737c1f/3c051/240528-3.png 760w&quot;
             sizes=&quot;(max-width: 760px) 100vw, 760px&quot;
             type=&quot;image/png&quot;
           /&gt;
           &lt;img
             class=&quot;gatsby-resp-image-image&quot;
-            src=&quot;/static/e8cf3198083c6391f4d91eaf2a737c1f/3c051/image-3.png&quot;
-            alt=&quot;image 3&quot;
-            title=&quot;image 3&quot;
+            src=&quot;/static/e8cf3198083c6391f4d91eaf2a737c1f/3c051/240528-3.png&quot;
+            alt=&quot;240528 3&quot;
+            title=&quot;240528 3&quot;
             loading=&quot;lazy&quot;
             decoding=&quot;async&quot;
             style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
