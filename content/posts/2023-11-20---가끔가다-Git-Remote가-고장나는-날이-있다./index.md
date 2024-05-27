@@ -4,7 +4,7 @@ date: "2023-11-20"
 template: "post"
 draft: false
 slug: "/posts/git-remote-error"
-category: "Git"
+category: "Tip"
 tags:
   - "Git"
   - "Tip"
