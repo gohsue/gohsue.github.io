@@ -7,7 +7,7 @@ slug: "/posts/aws-lambda"
 category: "ARTICLE"
 tags:
   - "AWS"
-  - "LABMDA"
+  - "Lambda"
   - "RDS"
   - "Tip"
   - "Effective"
