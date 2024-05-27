@@ -1,0 +1,386 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 4.25.7"/><meta name="description" content="Next.js 에서 정적 페이지 배포 (Static Exports)할 때 국제화 처리 하는 방법" data-gatsby-head="true"/><meta name="twitter:card" content="summary_large_image" data-gatsby-head="true"/><meta name="twitter:title" content="Next.js를 이용한 정적 페이지 배포에 국제화 더하기 - GOHSUE" data-gatsby-head="true"/><meta name="twitter:description" content="Next.js 에서 정적 페이지 배포 (Static Exports)할 때 국제화 처리 하는 방법" data-gatsby-head="true"/><meta name="og:title" content="Next.js를 이용한 정적 페이지 배포에 국제화 더하기 - GOHSUE" data-gatsby-head="true"/><meta name="og:type" content="website" data-gatsby-head="true"/><meta name="og:description" content="Next.js 에서 정적 페이지 배포 (Static Exports)할 때 국제화 처리 하는 방법" data-gatsby-head="true"/><meta name="image" content="https://gohsue.github.io/static/e8cf3198083c6391f4d91eaf2a737c1f/image-3.png" data-gatsby-head="true"/><meta name="og:image" content="https://gohsue.github.io/static/e8cf3198083c6391f4d91eaf2a737c1f/image-3.png" data-gatsby-head="true"/><meta name="twitter:image" content="https://gohsue.github.io/static/e8cf3198083c6391f4d91eaf2a737c1f/image-3.png" data-gatsby-head="true"/><meta name="theme-color" content="hsl(31, 92%, 62%)"/><style data-href="/styles.c5a1f6ddffc700a805ac.css" data-identity="gatsby-global-css">@import url(https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.0/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css);:after,:before,:root{--color-white:#fff;--color-primary:#5c92ff;--color-secondary:#f7a145;--color-prism-background:#f7f7f7;--color-typographic-base-font:#242933;--color-typographic-link-p-font:#5c92ff;--color-typographic-link-s-font:#f7a145;--color-page-border:#f7f7f7;--color-page-background:#fff;--color-sidebar-border:#f7f7f7;--color-sidebar-border-fade:#fff;--color-contacts-border:#f7f7f7;--color-button-border:#f7f7f7;--color-button-color:#242933;--color-theme-switcher:#3f485a;--color-theme-switcher-hover:#5c92ff}.dark :after,.dark :before,:root.dark{--color-white:#fff;--color-primary:#5c92ff;--color-secondary:#f7a145;--color-prism-background:#191d24;--color-typographic-base-font:#fff;--color-typographic-link-p-font:#5c92ff;--color-typographic-link-s-font:#f7a145;--color-page-border:#3f485a;--color-page-background:#242933;--color-sidebar-border:#3f485a;--color-sidebar-border-fade:#242933;--color-contacts-border:#3f485a;--color-button-border:#3f485a;--color-button-color:#fff;--color-theme-switcher:#f7f7f7;--color-theme-switcher-hover:#5c92ff}html{font-size:100}body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;background:var(--color-page-background);color:var(--color-typographic-base-font);font-size:16px;line-height:1.625;margin:0 0 0 calc(100vw - 100%);text-rendering:optimizelegibility}body,h1,h2,h3,h4,h5,h6{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif}h1,h2,h3,h4,h5,h6{font-weight:600}h1{font-size:40px;line-height:52px;margin-bottom:26px;margin-top:104px}h2{font-size:27px;line-height:39px}h2,h3{margin-bottom:13px;margin-top:52px}h3{font-size:22px;line-height:26px}h4{font-size:19.2px;margin-top:39px}h4,h5{line-height:26px;margin-bottom:13px}h5,h6{font-size:16px;margin-top:65px}h6{line-height:26px;margin-bottom:13px}img{max-width:100%}hr,img{border:0;display:block}hr{background-image:linear-gradient(180deg,transparent 1px,transparent 11px,#242933 0,#242933 15px,transparent 0,transparent 26px);background-size:100% 26px;color:var(--color-typographic-base-font);height:26px;margin:52px auto;width:100px}a{color:var(--color-typographic-link-p-font);text-decoration:none}a:active,a:focus,a:hover{color:var(--color-typographic-link-s-font)}b,strong{font-weight:600}ul{list-style:square;margin-bottom:26px}ul li{margin-bottom:10px;padding:0 5px}p{line-height:26px;margin-bottom:26px}blockquote{font-style:italic;padding:0;text-align:center}figure{display:block;height:auto;width:100%}figcaption{color:var(--color-typographic-base-font);font-size:14px;font-style:italic;line-height:19.5px;margin-bottom:0;margin-top:6.5px;text-align:center}@media screen and (min-width:685px){figure.float-left,figure.float-right{max-width:310px;padding:0 26px}.float-right{float:right}.float-left{float:left}}code[class*=language-],pre[class*=language-]{word-wrap:normal;color:#657b83;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;hyphens:none;line-height:1.5;-o-tab-size:4;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{border-radius:.3em;margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background-color:var(--color-prism-background)}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em}code[class*=language-] ::selection,code[class*=language-]::selection,pre[class*=language-] ::selection,pre[class*=language-]::selection{background:#073642}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#93a1a1}.token.punctuation{color:#586e75}.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#268bd2}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string,.token.url{color:#2aa198}.token.entity{background:#eee8d5;color:#657b83;cursor:help}.token.atrule,.token.attr-value,.token.keyword{color:#859900}.token.class-name,.token.function{color:#b58900}.token.important,.token.regex,.token.variable{color:#cb4b16}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}*{font-feature-settings:"ss01";font-family:Wanted Sans Variable,Wanted Sans,-apple-system,BlinkMacSystemFont,system-ui,Segoe UI,Apple SD Gothic Neo,Noto Sans KR,Malgun Gothic,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,sans-serif}.gatsby-resp-image-wrapper+em{color:#7f8ba4;display:block;text-align:center}img{border-radius:.25rem}code[class*=language-],pre[class*=language-]{color:#7f8ba4}code[class*=language-text],pre[class*=language-text]{color:var(--color-primary)}:not(pre)>code[class*=language-]{padding:.1em .3em}blockquote p{border-left:2px solid var(--color-primary);padding-left:1rem;text-align:left}p.warning{background-color:#fffcf5;border:0;border-radius:.5rem;font-style:normal;padding:.75rem;text-align:left}.dark p.warning,p.warning{color:var(--color-secondary)}.dark p.warning{background-color:#4e443b;opacity:.7}.Feed-module--feed--a6204 .Feed-module--item--c7a63{margin-bottom:32.5px}.Feed-module--feed--a6204 .Feed-module--item--c7a63:last-child{margin-bottom:13px}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--title--f252f{font-size:27px;line-height:39px;margin-bottom:13px;margin-top:0}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--title--f252f .Feed-module--link--6123b{color:var(--color-typographic-base-font)}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--title--f252f .Feed-module--link--6123b:focus,.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--title--f252f .Feed-module--link--6123b:hover{border-bottom:1px solid #242933;color:var(--color-typographic-base-font)}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--description--57348{font-size:16px;line-height:26px;margin-bottom:19.5px}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--meta--250c2 .Feed-module--time--72864{color:var(--color-typographic-base-font);font-size:14px;font-weight:600;text-transform:uppercase}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--meta--250c2 .Feed-module--divider--81a18{margin:0 13px}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--meta--250c2 .Feed-module--category--59f58 .Feed-module--link--6123b{color:var(--color-secondary);font-size:14px;font-weight:600;text-transform:uppercase}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--meta--250c2 .Feed-module--category--59f58 .Feed-module--link--6123b:focus,.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--meta--250c2 .Feed-module--category--59f58 .Feed-module--link--6123b:hover{color:#5c92ff}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--more--51a4e{color:var(--color-primary);font-size:16px}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--more--51a4e:focus,.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--more--51a4e:hover{border-bottom:1px solid #5c92ff;color:var(--color-primary)}.Layout-module--layout--2c933{margin-left:auto;margin-right:auto;max-width:1070px}.Layout-module--layout--2c933:before{content:"";display:table}.Layout-module--layout--2c933:after{clear:both;content:"";display:table}.Page-module--page--24e03{margin-bottom:52px}.Page-module--page--24e03 .Page-module--inner--4b31d{padding:26px 19.5px 0}.Page-module--page--24e03 .Page-module--title--90338{font-size:40px;font-weight:600;line-height:52px;margin-bottom:37.7px;margin-top:0}.Page-module--page--24e03 .Page-module--body--561c4{font-size:16px;line-height:26px;margin:0 0 26px}@media screen and (min-width:685px){.Page-module--page--24e03{width:calc(58.275% - 12.5px)}.Page-module--page--24e03:nth-child(1n){clear:none;float:left;margin-right:30px}.Page-module--page--24e03:last-child{margin-right:0}.Page-module--page--24e03:nth-child(12n){float:right;margin-right:0}.Page-module--page--24e03:nth-child(12n+1){clear:both}.Page-module--page--24e03 .Page-module--inner--4b31d{padding:32.5px 19.5px 0}}@media screen and (min-width:960px){.Page-module--page--24e03{width:calc(66.6% - 10px)}.Page-module--page--24e03:nth-child(1n){clear:none;float:left;margin-right:30px}.Page-module--page--24e03:last-child{margin-right:0}.Page-module--page--24e03:nth-child(3n){float:right;margin-right:0}.Page-module--page--24e03:nth-child(3n+1){clear:both}.Page-module--page--24e03 .Page-module--inner--4b31d{padding:39px 26px 0}}.Pagination-module--pagination--d61cb{display:flex;margin-top:52px}.Pagination-module--pagination--d61cb .Pagination-module--previous--4a76b{text-align:left;width:50%}.Pagination-module--pagination--d61cb .Pagination-module--previous--4a76b .Pagination-module--previousLink--5590d{color:var(--color-secondary);font-size:26px;font-weight:700}.Pagination-module--pagination--d61cb .Pagination-module--previous--4a76b .Pagination-module--previousLink--5590d:focus,.Pagination-module--pagination--d61cb .Pagination-module--previous--4a76b .Pagination-module--previousLink--5590d:hover{color:var(--color-primary)}.Pagination-module--pagination--d61cb .Pagination-module--previous--4a76b .Pagination-module--previousLink--5590d.Pagination-module--disable--7e105{color:#3f485a;pointer-events:none}.Pagination-module--pagination--d61cb .Pagination-module--next--1cab8{text-align:right;width:50%}.Pagination-module--pagination--d61cb .Pagination-module--next--1cab8 .Pagination-module--nextLink--532ff{color:var(--color-secondary);font-size:26px;font-weight:700}.Pagination-module--pagination--d61cb .Pagination-module--next--1cab8 .Pagination-module--nextLink--532ff:focus,.Pagination-module--pagination--d61cb .Pagination-module--next--1cab8 .Pagination-module--nextLink--532ff:hover{color:var(--color-primary)}.Pagination-module--pagination--d61cb .Pagination-module--next--1cab8 .Pagination-module--nextLink--532ff.Pagination-module--disable--7e105{color:#3f485a;pointer-events:none}.Button-module--button--b1113{border:1px solid var(--color-button-border);border-radius:20px;color:var(--color-button-color);display:inline-block;font-size:16px;font-weight:400;height:40px;line-height:40px;margin-left:auto;margin-right:auto;padding:0 26px;text-align:center;text-decoration:none}.Button-module--button--b1113:focus,.Button-module--button--b1113:hover{color:#5c92ff}.ThemeSwitcher-module--themeSwitcher--8a77f{--color:var(--color-theme-switcher)}.ThemeSwitcher-module--themeSwitcher--8a77f .ThemeSwitcher-module--button--7cb7b{align-items:center;background:transparent;border:0;cursor:pointer;display:flex;justify-content:center;outline:0}.ThemeSwitcher-module--themeSwitcher--8a77f .ThemeSwitcher-module--button--7cb7b svg{stroke:var(--color);pointer-events:none;transition:stroke .4s}.ThemeSwitcher-module--themeSwitcher--8a77f .ThemeSwitcher-module--button--7cb7b:hover{--color:var(--color-theme-switcher-hover)}.ThemeSwitcher-module--themeSwitcher--8a77f .ThemeSwitcher-module--moon--10537{stroke-dasharray:0 1px;opacity:0;transition:stroke-dasharray .2s ease-in,opacity .4s ease-in}.ThemeSwitcher-module--themeSwitcher--8a77f .ThemeSwitcher-module--sun--2163a{stroke-dasharray:1px 1px;opacity:1;transition:stroke-dasharray .2s ease-in,opacity .4s ease-in}.ThemeSwitcher-module--themeSwitcher--8a77f.ThemeSwitcher-module--dark--6db0c .ThemeSwitcher-module--moon--10537{stroke-dasharray:1px 1px;opacity:1}.ThemeSwitcher-module--themeSwitcher--8a77f.ThemeSwitcher-module--dark--6db0c .ThemeSwitcher-module--sun--2163a{stroke-dasharray:0 1px;opacity:0}.Author-module--author--cbd31 .Author-module--photo--9787b{background-clip:padding-box;border-radius:50%;display:inline-block;height:75px;margin-bottom:0;width:75px}.Author-module--author--cbd31 .Author-module--photo--9787b img{border-radius:50%}.Author-module--author--cbd31 .Author-module--title--cf7e5{font-size:18px;font-weight:600;line-height:29.25px;margin:0}.Author-module--author--cbd31 .Author-module--title--cf7e5 .Author-module--link--09c17,.Author-module--author--cbd31 .Author-module--title--cf7e5 .Author-module--link--09c17:focus,.Author-module--author--cbd31 .Author-module--title--cf7e5 .Author-module--link--09c17:hover{color:var(--color-typographic-base-font)}.Author-module--author--cbd31 .Author-module--subtitle--86ec5{color:#7f8ba4;line-height:26px;margin-bottom:26px}.Author-module--author--cbd31 .Author-module--titleContainer--4f576{align-items:center;display:flex;justify-content:space-between;margin:13px 0}.Icon-module--icon--1d7da{fill:currentcolor;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;speak:none;stroke:currentcolor;stroke-width:0;display:inline-block;font-style:normal;font-variant:normal;font-weight:400;height:1em;line-height:1em;text-align:center;text-transform:none;width:1em}.Contacts-module--contacts--09178{margin-bottom:26px}.Contacts-module--contacts--09178 .Contacts-module--list--9670b{display:flex;flex-flow:row wrap;flex-grow:0;flex-shrink:0;list-style:none;margin:13px 0;max-width:165px;padding:0}.Contacts-module--contacts--09178 .Contacts-module--list--9670b .Contacts-module--item--f9cb0{align-content:center;align-items:center;border:1px solid var(--color-contacts-border);border-radius:50%;display:flex;height:40px;justify-content:center;line-height:40px;margin:6.5px;padding:0;text-align:center;width:40px}.Contacts-module--contacts--09178 .Contacts-module--list--9670b .Contacts-module--item--f9cb0:nth-child(3n+1){margin-left:0}.Contacts-module--contacts--09178 .Contacts-module--list--9670b .Contacts-module--item--f9cb0 .Contacts-module--link--de1e0{border:0;color:var(--color-typographic-base-font);cursor:pointer;display:flex}.Contacts-module--contacts--09178 .Contacts-module--list--9670b .Contacts-module--item--f9cb0 .Contacts-module--link--de1e0:focus,.Contacts-module--contacts--09178 .Contacts-module--list--9670b .Contacts-module--item--f9cb0 .Contacts-module--link--de1e0:hover{color:var(--color-typographic-link-p-font)}.Copyright-module--copyright--2c602{color:#7f8ba4;font-size:14px}.Menu-module--menu--113a9{margin-bottom:26px}.Menu-module--menu--113a9 .Menu-module--list--e1ae3{list-style:none;margin:0;padding:0}.Menu-module--menu--113a9 .Menu-module--list--e1ae3 .Menu-module--item--8b679{margin:13px 0;padding:0}.Menu-module--menu--113a9 .Menu-module--list--e1ae3 .Menu-module--item--8b679 .Menu-module--link--a6f02{border:0;color:var(--color-typographic-base-font);font-size:16px;font-weight:400}.Menu-module--menu--113a9 .Menu-module--list--e1ae3 .Menu-module--item--8b679 .Menu-module--link--a6f02:focus,.Menu-module--menu--113a9 .Menu-module--list--e1ae3 .Menu-module--item--8b679 .Menu-module--link--a6f02:hover{border-bottom:1px solid #5c92ff;color:#5c92ff}.Menu-module--menu--113a9 .Menu-module--list--e1ae3 .Menu-module--item--8b679 .Menu-module--link--a6f02.Menu-module--active--6cb74{border-bottom:1px solid var(--color-typographic-base-font);color:var(--color-typographic-base-font)}.Sidebar-module--sidebar--1bfa1{width:100%}.Sidebar-module--sidebar--1bfa1 .Sidebar-module--inner--344d0{padding:26px 19.5px 0;position:relative}.Sidebar-module--sidebar--1bfa1 .Sidebar-module--inner--344d0:after{background:var(--color-sidebar-border);background:linear-gradient(to bottom,var(--color-sidebar-border) 0,var(--color-sidebar-border) 48%,var(--color-sidebar-border-fade) 100%)}@media screen and (min-width:685px){.Sidebar-module--sidebar--1bfa1{width:calc(41.625% - 17.5px)}.Sidebar-module--sidebar--1bfa1:nth-child(1n){clear:none;float:left;margin-right:30px}.Sidebar-module--sidebar--1bfa1:last-child{margin-right:0}.Sidebar-module--sidebar--1bfa1:nth-child(12n){float:right;margin-right:0}.Sidebar-module--sidebar--1bfa1:nth-child(12n+1){clear:both}.Sidebar-module--sidebar--1bfa1 .Sidebar-module--inner--344d0{padding:32.5px 19.5px 0}.Sidebar-module--sidebar--1bfa1 .Sidebar-module--inner--344d0:after{bottom:0;content:"";height:540px;position:absolute;right:-10px;top:30px;width:1px}}@media screen and (min-width:960px){.Sidebar-module--sidebar--1bfa1{width:calc(33.3% - 20px)}.Sidebar-module--sidebar--1bfa1:nth-child(1n){clear:none;float:left;margin-right:30px}.Sidebar-module--sidebar--1bfa1:last-child{margin-right:0}.Sidebar-module--sidebar--1bfa1:nth-child(3n){float:right;margin-right:0}.Sidebar-module--sidebar--1bfa1:nth-child(3n+1){clear:both}.Sidebar-module--sidebar--1bfa1 .Sidebar-module--inner--344d0{padding:39px}}.Author-module--author--1c58d{border-top:1px solid var(--color-page-border);line-height:26px;margin-bottom:52px;margin-top:26px;max-width:640px;padding-top:26px}.Author-module--author--1c58d .Author-module--bio--08950 .Author-module--twitter--90647{display:block;text-decoration:underline}.Author-module--author--1c58d .Author-module--bio--08950 .Author-module--twitter--90647:focus,.Author-module--author--1c58d .Author-module--bio--08950 .Author-module--twitter--90647:hover{color:var(--color-typographic-link-s-font)}@media screen and (min-width:685px){.Author-module--author--1c58d{margin-left:auto;margin-right:auto}}.Content-module--content--80d58{margin:0 auto;max-width:945px;padding:0 13px}.Content-module--content--80d58 .Content-module--title--09504{font-size:32px;font-weight:600;line-height:42.9px;margin:26px auto 0;max-width:640px;text-align:center}.Content-module--content--80d58 .Content-module--body--726c2 figure{margin-bottom:26px}.Content-module--content--80d58 .Content-module--body--726c2 figure blockquote{font-style:italic;margin-top:0;padding:26px 0;text-align:center}.Content-module--content--80d58 .Content-module--body--726c2 figure blockquote p{font-size:26.9072px;line-height:39px;margin-bottom:26px;margin-top:0;max-width:640px}.Content-module--content--80d58 .Content-module--body--726c2 a{text-decoration:underline}.Content-module--content--80d58 .Content-module--body--726c2 *{margin-left:auto;margin-right:auto;max-width:640px}.Content-module--content--80d58 .Content-module--body--726c2 h2>a{visibility:hidden}.Content-module--content--80d58 .Content-module--body--726c2 h2>a>svg{fill:var(--color-typographic-base-font)}.Content-module--content--80d58 .Content-module--body--726c2 img{max-width:100%}@media screen and (min-width:960px){.Content-module--content--80d58{padding:0}.Content-module--content--80d58 .Content-module--title--09504{font-size:48px;line-height:58.5px;margin-bottom:39px;margin-top:58.5px}.Content-module--content--80d58 .Content-module--body--726c2,.Content-module--content--80d58 .Content-module--body--726c2 p{font-size:18px;line-height:29.25px;margin-bottom:29.25px}.Content-module--content--80d58 .Content-module--body--726c2 h2>a{padding-right:13px;visibility:unset}}.Meta-module--meta--dae0a .Meta-module--date--4d30d{font-style:italic}.Tags-module--tags--18589{margin-bottom:13px}.Tags-module--tags--18589 .Tags-module--list--82ae6{list-style:none;padding:0}.Tags-module--tags--18589 .Tags-module--list--82ae6 .Tags-module--item--52015{display:inline-block;margin:6.5px 0}@media screen and (min-width:685px){.Tags-module--tags--18589 .Tags-module--list--82ae6 .Tags-module--item--52015:first-child{margin-left:0;padding-left:0}}.Post-module--post--3a994 .Post-module--content--3c6e5{margin:0 auto}.Post-module--post--3a994 .Post-module--comments--d3b99,.Post-module--post--3a994 .Post-module--footer--f8705{margin:0 auto;max-width:640px;padding:0 13px}.Post-module--post--3a994 .Post-module--buttons--2972d{align-items:center;display:flex;justify-content:center;margin:26px 0 0;text-align:center}.Post-module--post--3a994 .Post-module--buttons--2972d .Post-module--buttonArticles--d793a{margin:0 13px 0 0}@media screen and (min-width:960px){.Post-module--post--3a994 .Post-module--comments--d3b99,.Post-module--post--3a994 .Post-module--footer--f8705{padding:0}.Post-module--post--3a994 .Post-module--buttons--2972d{left:30px;margin:0 13px 0 0;max-width:none;position:fixed;top:30px}}</style><title data-gatsby-head="true">Next.js를 이용한 정적 페이지 배포에 국제화 더하기 - GOHSUE</title><link rel="alternate" type="application/rss+xml" title="GOHSUE" href="/rss.xml"/><style type="text/css">
+    .anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .anchor.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .anchor svg,
+    h2 .anchor svg,
+    h3 .anchor svg,
+    h4 .anchor svg,
+    h5 .anchor svg,
+    h6 .anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor svg,
+    h2:hover .anchor svg,
+    h3:hover .anchor svg,
+    h4:hover .anchor svg,
+    h5:hover .anchor svg,
+    h6:hover .anchor svg,
+    h1 .anchor:focus svg,
+    h2 .anchor:focus svg,
+    h3 .anchor:focus svg,
+    h4 .anchor:focus svg,
+    h5 .anchor:focus svg,
+    h6 .anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><link rel="preconnect" href="https://www.googletagmanager.com"/><link rel="dns-prefetch" href="https://www.googletagmanager.com"/><script async="" src="https://www.googletagmanager.com/gtag/js?id="></script><script>
+      
+      
+      if(true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){window.dataLayer && window.dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '', {"send_page_view":false});
+      }
+      </script><link rel="sitemap" type="application/xml" href="/sitemap/sitemap-index.xml"/><link rel="icon" href="/favicon-32x32.png?v=b6d0efa0f45d160a4b29bdd9619ce94d" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=b6d0efa0f45d160a4b29bdd9619ce94d"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=b6d0efa0f45d160a4b29bdd9619ce94d"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=b6d0efa0f45d160a4b29bdd9619ce94d"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=b6d0efa0f45d160a4b29bdd9619ce94d"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=b6d0efa0f45d160a4b29bdd9619ce94d"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=b6d0efa0f45d160a4b29bdd9619ce94d"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=b6d0efa0f45d160a4b29bdd9619ce94d"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=b6d0efa0f45d160a4b29bdd9619ce94d"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script></head><body><script>
+          void function() {
+            var cachedMode;
+
+            try {
+              var preferredTheme = JSON.parse(localStorage.getItem('diesel:theme-atom'));
+
+              if (preferredTheme && preferredTheme.mode) {
+                cachedMode = preferredTheme.mode;
+              }
+            } catch (err) { }
+
+            function setTheme(newTheme) {
+              document.documentElement.className = newTheme;
+            }
+
+            var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+            setTheme(cachedMode || (darkQuery.matches ? 'dark' : 'light'));
+          }()
+        </script><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="Layout-module--layout--2c933"><div class="Post-module--post--3a994"><div class="Post-module--buttons--2972d"><a class="Button-module--button--b1113 Post-module--buttonArticles--d793a" href="/">All Articles</a></div><div class="Post-module--content--3c6e5"><div class="Content-module--content--80d58"><h1 class="Content-module--title--09504">Next.js를 이용한 정적 페이지 배포에 국제화 더하기</h1><div class="Content-module--body--726c2"><h2 id="0-배경" style="position:relative;"><a href="#0-%EB%B0%B0%EA%B2%BD" aria-label="0 배경 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>0. 배경</h2>
+<p>현업에서 서버가 필요하지 않은 페이지의 경우, 서버 관리와 비용을 최소화하기 위해
+<code class="language-text">Next.js의 Static Exports</code> 를 이용하여 <code class="language-text">S3</code>를 이용한 <strong>정적 페이지 배포 방식을 채택하였다.</strong></p>
+<p>하지만, <code class="language-text">next-i18next</code>를 이용한 국제화 라우팅은 Node.js 서버를 통해 처리된다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 639px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/698740b4e6b5fad478b74aa95b5fc1dc/738b8/image.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 91.25000000000001%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAIAAADUsmlHAAAACXBIWXMAAAsTAAALEwEAmpwYAAABoElEQVQ4y52S647bIBCFB7Bj4wv4AgwDdhInm21tJ1tV6vs/W+W06r9ksz0aIY3EpzM6MxBjXJZlnudlWW632+Vymed5XVfnHAAwxuCJCim1Ul3XKqW0UrKQWmutVJZlf2D+QBusmiaMo0HvKPg4GIc0jEjkvUfEGCMi0r11zoUQrLVEFGNMkgSoUd8jvmF/dv3Fm3dvzqa9xO03EZVl+WzsdQck1VjboeoHhUNtY+1+7lgCLyiknDRSOwSFlOWUS8rlPmWcsU/SuovDTkPeQyLhq9oc6oHpExMZA/hXr4kxkAZKD2L3Zec73G8wE//BcqhH0BMUuPFbUn/r8wvbnDO9TS4NFA6kgyJCjpCUr5kXhlXESg9VzBRa6xDJ38/qx8eHUgoeRbiNV3ioj9sLgos0ETwRPE2E4LyQUiSP74UBqI46P3V4aC3xXZVXXWuD7rDtUSRPV8AAbHyL05Wma5hWLk3rpsO3X+Pptj+tJpxVYx7GxhiYcA7TzR9XOl4reyy0VR2pFlVrG7tvev8YBtA9GX/ocez90dKUpumLe/4Nedoh4RF4qSsAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/698740b4e6b5fad478b74aa95b5fc1dc/8ac56/image.webp 240w,
+/static/698740b4e6b5fad478b74aa95b5fc1dc/d3be9/image.webp 480w,
+/static/698740b4e6b5fad478b74aa95b5fc1dc/d95e5/image.webp 639w"
+              sizes="(max-width: 639px) 100vw, 639px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/698740b4e6b5fad478b74aa95b5fc1dc/8ff5a/image.png 240w,
+/static/698740b4e6b5fad478b74aa95b5fc1dc/e85cb/image.png 480w,
+/static/698740b4e6b5fad478b74aa95b5fc1dc/738b8/image.png 639w"
+            sizes="(max-width: 639px) 100vw, 639px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/698740b4e6b5fad478b74aa95b5fc1dc/738b8/image.png"
+            alt="image"
+            title="image"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span><em>정적 파일 배포 시 지원하지 않는 기능 “국제화 라우팅”</em></p>
+<blockquote>
+<p>즉, 정적 배포 시에는 국제화 라우팅 기능을 사용할 수가 없다.
+그러면.. 국제화는 어떻게 진행하지?</p>
+</blockquote>
+<br />
+<br />
+<h2 id="1-국제화-라우팅-직접-구현" style="position:relative;"><a href="#1-%EA%B5%AD%EC%A0%9C%ED%99%94-%EB%9D%BC%EC%9A%B0%ED%8C%85-%EC%A7%81%EC%A0%91-%EA%B5%AC%ED%98%84" aria-label="1 국제화 라우팅 직접 구현 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. 국제화 라우팅 직접 구현</h2>
+<p>불행 중 다행히도, <a href="https://github.com/i18next/next-i18next?tab=readme-ov-file#static-html-export-ssg" target="_blank" rel="nofollow noopener noreferrer">next-i18n-next 에서는 이 블로그를 참고하여 직접 구현하는 것을 제안한다.</a></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 864px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/8d19eb0a85a14bce0f0708f922083d5e/9cab2/image-1.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 63.74999999999999%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAACuElEQVQozyWRSW+baACGUVNDWAx8gMGAweZjNzvGJrYJXurEteVmbaN0cTepM0oXtVUP1aiHOY3mb1dtpffwPIfn9CJRXg7KuijrtJiMJnPTjSlGooHMcG2Wl1leBoICBOUP/1GWl2kg0UBCetCz3dB2Iz9MbS+SYSYamWQWXSd1/MQN8qSYxoOJ7SduP/WC3HQjVbea7O8YSF0ZpqqVK2YqGYnqDFUraamGqBiS0msrXVk12mpPVH5N1iADWhTNU4xAAxHpWoEVTXpuYfqlHU0tr4Qw7uq2YTiCYgHZ5RSflT2pY/eg01Jt0OmLmqf0fIbXEMUttWQpp/OWG7egx+cDoaoEPxLdiIUxMDLByHg9anU8WXeEjsvrkaD1W5rHiD2E1QIqmKHVprHYoNm8cfvs4L/v98939yZzdLQg/DHjlLyZAz1mOyGj9jktYBSf7QSs4iJ8x2fco8PqBNueHw6XeL1ufPkL/XuPzlfoaIZ7I9o5AjBve2MBZm0zZzuhbBecHgPVQziYMFaBBfnh5gIr6kMnxy6v0I9v0OsztBij8RGm+02ruHj7+dH+7snrD8tHT29e3rn5oilZCNBD1hriRkJOTolygQdDvDrB3r5EL9fY1Rn2YNPoD5rDBzdfftz9+H//6Z/33/7dv/u6uX5FihbC6wHfjWgzJ8MpGU/ItMKLJZZU6GqF7R9jr26xaoou1872Aq6v/PNner0b7J7CYgX0EOG0Pg8z4IyYfE2ZBWlklF1QRkbkK2K2JZ+/wNc74vj0fnR0UJ8eHK8ag/ogHFP+GMAU4VSvZRWiMxKiORvWTHDMhjPOHbP9WbO/wKMlPt6R0YIOanKypc5umO01mD4E2YJ3CgS0LV4PhW4o9CIeppyRMs6QsQbASJr2kIQ54ZVE/uszwh4S5YI8PmmmFe2PODP5CdVzeyfW+c/5AAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/8d19eb0a85a14bce0f0708f922083d5e/8ac56/image-1.webp 240w,
+/static/8d19eb0a85a14bce0f0708f922083d5e/d3be9/image-1.webp 480w,
+/static/8d19eb0a85a14bce0f0708f922083d5e/b4e26/image-1.webp 864w"
+              sizes="(max-width: 864px) 100vw, 864px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/8d19eb0a85a14bce0f0708f922083d5e/8ff5a/image-1.png 240w,
+/static/8d19eb0a85a14bce0f0708f922083d5e/e85cb/image-1.png 480w,
+/static/8d19eb0a85a14bce0f0708f922083d5e/9cab2/image-1.png 864w"
+            sizes="(max-width: 864px) 100vw, 864px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/8d19eb0a85a14bce0f0708f922083d5e/9cab2/image-1.png"
+            alt="image 1"
+            title="image 1"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span><em>아.. 지원 안하니까 포스팅 보고 직접 해라.. ㅇㅋ</em></p>
+<p>친절한 포스팅 덕분에 다음과 같은 순서를 거쳐 작업을 진행했다.</p>
+<ol>
+<li><code class="language-text">next-i18next</code>, <code class="language-text">next-language-detector</code> 설치</li>
+<li><code class="language-text">/[locale]</code> 하위로 모든 pages 이동</li>
+<li>추출한 언어 JSON <code class="language-text">public/locales/</code> 하위로 <code class="language-text">ko</code>, <code class="language-text">en</code> 추가</li>
+<li>동적 라우트를 위한 js 추가 샘플 코드</li>
+<li>app, document 세팅</li>
+<li>redirect 로직 추가</li>
+</ol>
+<p>예시 코드는 모두 <code class="language-text">js</code> 로 되어있었기 때문에 <code class="language-text">@ts-ignore</code> , <code class="language-text">eslint-disabled</code> 처리하고 기능 동작 자체에만 집중하여 마무리했다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/47aa2c81e19f0c82d54ce10edfd55729/302a4/image-2.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 59.166666666666664%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsTAAALEwEAmpwYAAACvElEQVQoz3XTyU8TURwH8FdqZFFiNLgQOnnhYFJuEMUr0QT/A+AfgOjRE/FgolGJRA8aNfEEAYOeOCgHlUVaCkNby1q2QoW2ttOFLrSdTpfZvuYRIBD0m7zDezPvkze/9xtCjiUcjJZFQjESC8fvzLsWYZ20wb20mlxfXmmxjP1osttsN3mr9YbdZrs1OTpas+xyEffcHHnY3U1OhVJKoqGY4Y8vRAK+oNm7sZXxbniRjCYAVQWKMvRCASgWoeXzEHy+5wAIAOOnwcHTGBvDn4f250JIJ7lkeg35LcT9X9Xozhc9n7DrqpTTpVRKhqIgLggvDsCyj/39pzE22AtPH78k9fV1l5dcC9vpyAwW+dfasv2tHg+M6Fo+pyeEsBwXQgh4vT1aPk92PB5jU2PjkXECZOE47lJVVcXFXDK1hlIBUEQNqgiUckCxBCiyIosieKv1HTsAi8lkOgGepZSep5RW3G1tLeM47urYtxGS2d31QJYBWdUgq4CsHNZPYTX1uN3vCSHGjra2akrpBUppJaW0moEs1ymltR3t7QaO465sr6+QbDzukfYyEAIhLRoUsCtEoEoSdAaWSuxSegkhZ5qbm+sppQ0HzrVTn2wymWoIIedkUVyLhiL4OWHVLBYeTscSMmkJ2aykFEQROxsbbwgh5WxPXV3d/2toNpsN5ZWVtWGfz1vIZKCquqbGgpC3XVD889CC64qYSmF6cvLDwS0bGsxmw3HjCOzt6SG3W1rYkiGwteXZ8W5ibzelpeeGMTfxCL/Gn+je78+UTacDqyurPclUmmQTCSODj7Dj7cMe3Ovs3AdVSfrN+q1YKGlKaBOiexSZlXHkVqdkOZtFKhZ7ddiHA3195J9hv9H9ri4yNDBAFpxOi8NmAz81pfLTPOwzDth5h85Pz6qu2VksOp0PIn4/ifj9xsFj4F8Fk/o4lR/VkQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/47aa2c81e19f0c82d54ce10edfd55729/8ac56/image-2.webp 240w,
+/static/47aa2c81e19f0c82d54ce10edfd55729/d3be9/image-2.webp 480w,
+/static/47aa2c81e19f0c82d54ce10edfd55729/e46b2/image-2.webp 960w,
+/static/47aa2c81e19f0c82d54ce10edfd55729/260c2/image-2.webp 1080w"
+              sizes="(max-width: 960px) 100vw, 960px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/47aa2c81e19f0c82d54ce10edfd55729/8ff5a/image-2.png 240w,
+/static/47aa2c81e19f0c82d54ce10edfd55729/e85cb/image-2.png 480w,
+/static/47aa2c81e19f0c82d54ce10edfd55729/d9199/image-2.png 960w,
+/static/47aa2c81e19f0c82d54ce10edfd55729/302a4/image-2.png 1080w"
+            sizes="(max-width: 960px) 100vw, 960px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/47aa2c81e19f0c82d54ce10edfd55729/d9199/image-2.png"
+            alt="image 2"
+            title="image 2"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span><em>국제화 라우팅 페이지 생성 과정</em></p>
+<p>첫번째 PR에서 다음 해야할 일을 다음과 같이 정리했다.</p>
+<ol>
+<li><code class="language-text">ts-ignore</code> 처리 제거</li>
+<li><code class="language-text">js -> ts</code> 가능한지 확인 (현재 lint 모두 무시)</li>
+<li>국제화용 <code class="language-text">Link Component</code> 추가 네이밍 변경</li>
+<li><code class="language-text">리다이렉트용 js 자동 생성 쉘 스크립트</code> 추가</li>
+<li><code class="language-text">NEXT__DATA 기반 locale</code> 처리</li>
+</ol>
+<br />
+<br />
+<h2 id="2-ts-환경에-맞게-코드-변경" style="position:relative;"><a href="#2-ts-%ED%99%98%EA%B2%BD%EC%97%90-%EB%A7%9E%EA%B2%8C-%EC%BD%94%EB%93%9C-%EB%B3%80%EA%B2%BD" aria-label="2 ts 환경에 맞게 코드 변경 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. TS 환경에 맞게 코드 변경</h2>
+<p>두번째 PR에서 정상적으로 동작하는 <code class="language-text">js</code> 파일을 안전하게 관리할 수 있는 <code class="language-text">ts</code> 코드로 변경하는 작업을 거쳤다.</p>
+<ol>
+<li><del>ts-ignore 처리 제거</del> -> <code class="language-text">완료</code></li>
+<li><del>js -> ts 가능한지 확인</del> -> <code class="language-text">완료 - /lib 하위 ts 변경</code></li>
+<li><del>국제화용 Link Component 추가 네이밍 변경</del> -> <code class="language-text">완료 - LocaleLink</code></li>
+<li><del>리다이렉트용 js 자동 생성 스크립트 추가</del> -> <code class="language-text">완료 (/locale 하위 전부 Redirect 파일 생성)</code></li>
+<li><del>NEXT__DATA 기반 locale 처리</del> -> <code class="language-text">완료</code></li>
+</ol>
+<br />
+<br />
+<h2 id="3-절대-경로-제거" style="position:relative;"><a href="#3-%EC%A0%88%EB%8C%80-%EA%B2%BD%EB%A1%9C-%EC%A0%9C%EA%B1%B0" aria-label="3 절대 경로 제거 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. 절대 경로 제거</h2>
+<p>라우팅 스크립트에서 편하게 설정하기 위해서 baseUrl을 설정하여 절대경로로 모듈을 import 하는 형식으로 설정했었다.</p>
+<blockquote>
+<p>as-is: import { Sample } from ‘../../components/Sample’;<br>
+to-be: import { Sample } from ‘@/components/Sample’;</p>
+</blockquote>
+<p>하지만, <strong>불행히도 모노레포에서 절대 경로를 사용하면 타입이 추론되지 않는 이슈가 있었다.. (ts 함수 한정)</strong></p>
+<p>이로 인해 절대 경로 방식을 사용하지 않고, 기존 방식인 상대 경로를 이용한 import 방식을 유지하되 Redirect 로직은 현재 디렉토리 위치를 이용하여 제거해주는 스크립트를 추가하였다.</p>
+<br />
+<br />
+<h2 id="4-config-타입-선언" style="position:relative;"><a href="#4-config-%ED%83%80%EC%9E%85-%EC%84%A0%EC%96%B8" aria-label="4 config 타입 선언 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4. Config 타입 선언</h2>
+<p><code class="language-text">next-18next.config.js</code> 모듈 설정을 불러오면서 생기는 <code class="language-text">implicit any type</code> eslint 에러를 해결하기 위해 <code class="language-text">next-i18next.config.d.ts</code> 타입을 선언해주었다.</p>
+<div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token keyword">declare</span> <span class="token keyword">module</span> <span class="token string">"next-i18next.config"</span> <span class="token punctuation">{</span>
+  <span class="token keyword">export</span> <span class="token keyword">const</span> i18n<span class="token operator">:</span> <span class="token punctuation">{</span>
+    defaultLocale<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+    locales<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>이렇게 끝날 줄 알았다..</p>
+<br />
+<br />
+<h2 id="5-default-페이지-경로-변경" style="position:relative;"><a href="#5-default-%ED%8E%98%EC%9D%B4%EC%A7%80-%EA%B2%BD%EB%A1%9C-%EB%B3%80%EA%B2%BD" aria-label="5 default 페이지 경로 변경 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5. Default 페이지 경로 변경</h2>
+<p>원래는 <code class="language-text">locale prefix</code>가 붙지 않는 페이지는 Redirect 컴포넌트를 이용하여<br>
+<strong>강제로 prefix 페이지로 이동시키도록 처리</strong>하였다.</p>
+<blockquote>
+<p><a href="https://www.inflearn.com/signup" target="_blank" rel="nofollow noopener noreferrer">https://www.inflearn.com/signup</a> → locale 설정에 맞춰
+<a href="https://www.inflearn.com/ko/signup" target="_blank" rel="nofollow noopener noreferrer">https://www.inflearn.com/ko/signup</a></p>
+</blockquote>
+<p>하지만, 내부 논의 끝에 <code class="language-text">locale prefix</code>가 없으면 <code class="language-text">ko</code>와 동일한 페이지가 보이도록 처리하는 방향으로 수정됐다.
+<strong>이유는 기존 경로의 SEO를 유지하지 위해서였다. (너무나도 강력)</strong></p>
+<p>따라서, 리다이렉트 로직을 제거하고 무조건 ko 와 동일한 페이지가 보이도록 처리하기 위해 쉘 스크립트를 수정했다.</p>
+<div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token comment">// 수정 전 (기존 블로그 포스팅과 유사)</span>
+<span class="token comment">// packages/auth/src/pages/signup/index.tsx</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Redirect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./../../lib/redirect"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> Redirect<span class="token punctuation">;</span>
+
+
+<span class="token comment">// 수정 후</span>
+<span class="token comment">// packages/auth/src/pages/[locale]/signup/index.tsx 레이아웃과 동일</span>
+<span class="token comment">// packages/auth/src/pages/signup/index.tsx</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> useTranslation <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"next-i18next"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> LocaleLink <span class="token keyword">from</span> <span class="token string">"../../components/LocaleLink/LocaleLink"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> getStaticPaths<span class="token punctuation">,</span> makeStaticProps <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"../../lib/getStatic"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> getStaticProps <span class="token operator">=</span> <span class="token function">makeStaticProps</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"signup"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token punctuation">{</span> getStaticPaths<span class="token punctuation">,</span> getStaticProps <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">SignUpPage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span> t <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useTranslation</span><span class="token punctuation">(</span><span class="token string">"signup"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">return</span> <span class="token punctuation">(</span>
+  <span class="token operator">&lt;</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span>Title order<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">}</span><span class="token operator">></span><span class="token punctuation">{</span><span class="token function">t</span><span class="token punctuation">(</span><span class="token string">"title"</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>Title<span class="token operator">></span>
+    <span class="token operator">&lt;</span>Text size<span class="token operator">=</span><span class="token string">"md"</span> color<span class="token operator">=</span><span class="token string">"gray.9"</span> weight<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">500</span><span class="token punctuation">}</span><span class="token operator">></span>
+      인프런 계정으로 로그인할 수 있어요<span class="token punctuation">.</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>Text<span class="token operator">></span>
+    <span class="token operator">&lt;</span>LocaleLink href<span class="token operator">=</span><span class="token string">"/signin"</span><span class="token operator">></span>Link Test<span class="token operator">&lt;</span><span class="token operator">/</span>LocaleLink<span class="token operator">></span>
+    <span class="token comment">// ...</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<br />
+<br />
+<h3 id="6-페이지-생성-경로-변경" style="position:relative;"><a href="#6-%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%83%9D%EC%84%B1-%EA%B2%BD%EB%A1%9C-%EB%B3%80%EA%B2%BD" aria-label="6 페이지 생성 경로 변경 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>6. 페이지 생성 경로 변경</h3>
+<p>기존 로직은 페이지 생성 시 <code class="language-text">/[locale]</code> 내에서 page를 생성하도록 권장했다.</p>
+<p>하지만 redirect 방식이 변경되면서 작업에 불편함을 느낀다는 피드백을 받아,
+<code class="language-text">/pages</code> 하위에 <code class="language-text">router page</code>를 추가하면, <strong>빌드 시 자동으로 <code class="language-text">/[locale]</code> 폴더가 generate 되도록 수정하였다.</strong></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 760px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/e8cf3198083c6391f4d91eaf2a737c1f/3c051/image-3.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 37.916666666666664%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAACQklEQVQoz22Py0sUARzHf6sURpeiAg/meAjqoORjC+tehwy7VP9E9jgYURAhUWEEHaXCKKKTROShsNRWXWVIV9xczXV3dh47j53HOjuz856d/cUmeOoLn9v3+4EvMBTXzBZY4Arc1ZXlNczniltRgENGuXzDUORhjqJ6+UIBEBHa29v3IAgC/puZ7z+aMjkeGFHvVrPrvrDyBcsb02iJPHpmFRW++LQhezE6ur+jo6OZIIimtra2f8JqtbqHYRhQqVR2pY3Bh09fz1r5tMMkxpCdfxPq1LbvGCZmVlPPAeDI5YGB1s7OTiIejx9o9OcSiZjnukCSJCwmk7HQ92OqLANcGRxsAYB93yYn43XPt3A3EdbCEIMADVV92BAAQPN6hoN0eg2mZ5Kgmwh+gLC0lISZnyTU6giKYgP09vQcA4AWcmG+2zVMa3szi9nNXOQYdhRaNu7I8nieoscTc8vXvRCPi6Jwiqa5a7aLrYh4kKbp0xTFXkDEQ6rmHt67/PH9u3M7suJwDIdMfr1uVdjIqqioSsqYInOMZwlR6GpVwzBuKSVm2DG5R76t3ilJ8sWywo4EtnBf1/h78HlioilFkvA7tdIlcUXXsUzcEafqufRYzVA3sKqHT2x97Vcu/RYVbgproT+kSws3/6Rev1SLsyO1EPs1fvZxdvXVqMQsPgNqaytGZ7OwncmcUHje5FkWRTYfSVwuFFka2Tz1wLHLl0KvdDfwtNuaVj5pVaQu3xbOO2apTxKVo7YhnQlsoV/XhL6/iHOt2F6o+oIAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/e8cf3198083c6391f4d91eaf2a737c1f/8ac56/image-3.webp 240w,
+/static/e8cf3198083c6391f4d91eaf2a737c1f/d3be9/image-3.webp 480w,
+/static/e8cf3198083c6391f4d91eaf2a737c1f/9046c/image-3.webp 760w"
+              sizes="(max-width: 760px) 100vw, 760px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/e8cf3198083c6391f4d91eaf2a737c1f/8ff5a/image-3.png 240w,
+/static/e8cf3198083c6391f4d91eaf2a737c1f/e85cb/image-3.png 480w,
+/static/e8cf3198083c6391f4d91eaf2a737c1f/3c051/image-3.png 760w"
+            sizes="(max-width: 760px) 100vw, 760px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/e8cf3198083c6391f4d91eaf2a737c1f/3c051/image-3.png"
+            alt="image 3"
+            title="image 3"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span><em>국제화 라우팅 페이지 생성 과정 (변경 후)</em></p>
+<br />
+<br />
+<h2 id="7-readme-작성" style="position:relative;"><a href="#7-readme-%EC%9E%91%EC%84%B1" aria-label="7 readme 작성 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>7. README 작성</h2>
+<p>진짜 마무리.</p>
+<p>작업 방식을 팀 내에 공유하고 이에 맞춰 <code class="language-text">README</code>를 작성했다.
+또한 다국어 JSON 파일 관리를 위한 <code class="language-text">컨벤션</code>에 대해서도 간략하게 정리해뒀다.</p>
+<p>즉, 현재 이 패키지 같은 경우에는 JSON 파일만 추가하면 다국어를 지원하는 상태이다.</p>
+<br />
+<br />
+<h2 id="8-이후-추가-작업-예정" style="position:relative;"><a href="#8-%EC%9D%B4%ED%9B%84-%EC%B6%94%EA%B0%80-%EC%9E%91%EC%97%85-%EC%98%88%EC%A0%95" aria-label="8 이후 추가 작업 예정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>8. 이후 추가 작업 (예정)</h2>
+<h3 id="라이브러리화" style="position:relative;"><a href="#%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%ED%99%94" aria-label="라이브러리화 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>라이브러리화</h3>
+<p>환경 세팅을 위한 보일러 플레이트 코드가 다수 존재한다.</p>
+<p>이를 라이브러리화해서 팀 내에서 손쉽게 사용하는 방식을 고안하고 있다.</p>
+<h3 id="json-검사" style="position:relative;"><a href="#json-%EA%B2%80%EC%82%AC" aria-label="json 검사 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JSON 검사</h3>
+<p><code class="language-text">locale</code> 별로 JSON에 동일한 프로퍼티가 존재하는지를 검사하는 테스트 기능을 추가하면 좋겠단 생각이 들었다.</p>
+<p>현재는 휴먼 에러로 인해 언어 변경을 놓칠 수 있는 상태이다.</p>
+<br />
+<br />
+<h2 id="9-참고" style="position:relative;"><a href="#9-%EC%B0%B8%EA%B3%A0" aria-label="9 참고 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>9. 참고</h2>
+<ul>
+<li><a href="https://nextjs.org/docs/pages/building-your-application/deploying/static-exports" target="_blank" rel="nofollow noopener noreferrer">Deploying: Static Exports</a></li>
+<li><a href="https://github.com/i18next/next-i18next?tab=readme-ov-file#static-html-export-ssg" target="_blank" rel="nofollow noopener noreferrer">GitHub - i18next/next-i18next: The easiest way to translate your NextJs apps.</a></li>
+<li><a href="https://github.com/yeonjuan/dev-blog/blob/master/JavaScript/static-html-export-i18n.md" target="_blank" rel="nofollow noopener noreferrer">dev-blog/JavaScript/static-html-export-i18n.md at master · yeonjuan/dev-blog</a></li>
+</ul></div></div></div><div class="Post-module--footer--f8705"><div class="Meta-module--meta--dae0a"><p class="Meta-module--date--4d30d">Published<!-- --> <!-- -->May 28, 2024</p></div><div class="Tags-module--tags--18589"><ul class="Tags-module--list--82ae6"><li class="Tags-module--item--52015"><a class="Button-module--button--b1113" href="/tag/nextjs/">Next.js</a></li><li class="Tags-module--item--52015"><a class="Button-module--button--b1113" href="/tag/static/">Static</a></li><li class="Tags-module--item--52015"><a class="Button-module--button--b1113" href="/tag/i18n/">i18n</a></li><li class="Tags-module--item--52015"><a class="Button-module--button--b1113" href="/tag/tip/">Tip</a></li><li class="Tags-module--item--52015"><a class="Button-module--button--b1113" href="/tag/effective/">Effective</a></li></ul></div><div class="Author-module--author--1c58d"><p class="Author-module--bio--08950">고슈입니다. 반갑습니다 😄<a class="Author-module--twitter--90647" href="https://www.twitter.com/go__swimming" rel="noopener noreferrer" target="_blank"><strong>GOHSUE</strong> on Twitter</a></p></div></div><div class="Post-module--comments--d3b99"></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/posts/next-js-static-exports-with-i18n";window.___webpackCompilationHash="1cc63ea4f704a5554805";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-e4f0cbc0d8e6caa810cc.js"],"app":["/app-fd43f46fe7dba24604e1.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-cb8e7bdc9132427c1df2.js"],"component---src-templates-categories-template-categories-template-tsx":["/component---src-templates-categories-template-categories-template-tsx-ea46cd2aa03631eac8fc.js"],"component---src-templates-category-template-category-template-tsx":["/component---src-templates-category-template-category-template-tsx-cc09ac34a7099f6a7eab.js"],"component---src-templates-index-template-index-template-tsx":["/component---src-templates-index-template-index-template-tsx-e49f55704b3fb0f98e4e.js"],"component---src-templates-not-found-template-not-found-template-tsx":["/component---src-templates-not-found-template-not-found-template-tsx-408c1037b037352f306e.js"],"component---src-templates-page-template-page-template-tsx":["/component---src-templates-page-template-page-template-tsx-9faac475d371fb61ba74.js"],"component---src-templates-post-template-post-template-tsx":["/component---src-templates-post-template-post-template-tsx-7aa08f6d425242ccbf83.js"],"component---src-templates-tag-template-tag-template-tsx":["/component---src-templates-tag-template-tag-template-tsx-ba3c8281b4b30c5fb1b0.js"],"component---src-templates-tags-template-tags-template-tsx":["/component---src-templates-tags-template-tags-template-tsx-0edda601523062e2c3a4.js"]};/*]]>*/</script><script src="/polyfill-e4f0cbc0d8e6caa810cc.js" nomodule=""></script><script src="/app-fd43f46fe7dba24604e1.js" async=""></script><script src="/framework-fec0957b30559ff3b685.js" async=""></script><script src="/webpack-runtime-e16ed68792c70656f689.js" async=""></script></body></html>
