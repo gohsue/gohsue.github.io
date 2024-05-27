@@ -110,8 +110,8 @@ declare module "next-i18next.config" {
 원래는 `locale prefix`가 붙지 않는 페이지는 Redirect 컴포넌트를 이용하여  
 **강제로 prefix 페이지로 이동시키도록 처리**하였다.
 
-> https://www.inflearn.com/signup → locale 설정에 맞춰
-> https://www.inflearn.com/ko/signup
+> https://www.sample.com/signup → locale 설정에 맞춰
+> https://www.sample.com/ko/signup
 
 하지만, 내부 논의 끝에 `locale prefix`가 없으면 `ko`와 동일한 페이지가 보이도록 처리하는 방향으로 수정됐다.
 **이유는 기존 경로의 SEO를 유지하지 위해서였다. (너무나도 강력)**
